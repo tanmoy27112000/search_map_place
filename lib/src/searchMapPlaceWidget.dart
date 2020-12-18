@@ -286,8 +286,8 @@ class _SearchMapPlaceWidgetState extends State<SearchMapPlaceWidget>
   InputDecoration _inputStyle() {
     return InputDecoration(
       hintText: this.widget.placeholder,
-      // border: InputBorder.none,
-      contentPadding: EdgeInsets.symmetric(horizontal: 0.0, vertical: 0.0),
+      prefixIcon: Icon(Icons.search),
+      border: InputBorder.none,
       hintStyle: TextStyle(
         color: widget.darkMode ? Colors.black : Colors.black,
       ),
