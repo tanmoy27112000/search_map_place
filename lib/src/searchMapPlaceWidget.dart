@@ -231,23 +231,23 @@ class _SearchMapPlaceWidgetState extends State<SearchMapPlaceWidget>
                   ),
                 ),
               ),
-              Container(width: 15),
-              if (widget.hasClearButton)
-                GestureDetector(
-                  onTap: () {
-                    if (_crossFadeState == CrossFadeState.showSecond)
-                      _textEditingController.clear();
-                  },
-                  // child: Icon(_inputIcon, color: this.widget.iconColor),
-                  child: AnimatedCrossFade(
-                    crossFadeState: _crossFadeState,
-                    duration: Duration(milliseconds: 300),
-                    firstChild: Icon(widget.icon, color: widget.iconColor),
-                    secondChild: Icon(Icons.clear, color: widget.iconColor),
-                  ),
-                ),
-              if (!widget.hasClearButton)
-                Icon(widget.icon, color: widget.iconColor)
+              // Container(width: 15),
+              // if (widget.hasClearButton)
+              //   GestureDetector(
+              //     onTap: () {
+              //       if (_crossFadeState == CrossFadeState.showSecond)
+              //         _textEditingController.clear();
+              //     },
+              //     // child: Icon(_inputIcon, color: this.widget.iconColor),
+              //     child: AnimatedCrossFade(
+              //       crossFadeState: _crossFadeState,
+              //       duration: Duration(milliseconds: 300),
+              //       firstChild: Icon(widget.icon, color: widget.iconColor),
+              //       secondChild: Icon(Icons.clear, color: widget.iconColor),
+              //     ),
+              //   ),
+              // if (!widget.hasClearButton)
+              //   Icon(widget.icon, color: widget.iconColor)
             ],
           ),
         ],
