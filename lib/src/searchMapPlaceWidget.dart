@@ -209,16 +209,25 @@ class _SearchMapPlaceWidgetState extends State<SearchMapPlaceWidget>
           Row(
             children: <Widget>[
               Expanded(
-                child: TextField(
-                  decoration: _inputStyle(),
-                  controller: _textEditingController,
-                  onSubmitted: (_) => _selectPlace(),
-                  onEditingComplete: _selectPlace,
-                  autofocus: false,
-                  focusNode: _fn,
-                  style: TextStyle(
-                    fontSize: MediaQuery.of(context).size.width * 0.04,
-                    color: widget.darkMode ? Colors.black : Colors.black,
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: TextField(
+                      decoration: _inputStyle(),
+                      controller: _textEditingController,
+                      onSubmitted: (_) => _selectPlace(),
+                      onEditingComplete: _selectPlace,
+                      autofocus: false,
+                      focusNode: _fn,
+                      style: TextStyle(
+                        fontSize: MediaQuery.of(context).size.width * 0.04,
+                        color: widget.darkMode ? Colors.black : Colors.black,
+                      ),
+                    ),
                   ),
                 ),
               ),
