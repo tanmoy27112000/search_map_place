@@ -630,15 +630,12 @@ class _SearchMapBorderState extends State<SearchMapBorder>
                   child: child,
                 ),
                 if (_placePredictions.length > 0)
-                  Opacity(
-                    opacity: _listOpacity.value,
-                    child: SingleChildScrollView(
-                      child: Column(
-                        children: <Widget>[
-                          for (var prediction in _placePredictions)
-                            _placeOption(Place.fromJSON(prediction, geocode)),
-                        ],
-                      ),
+                  SingleChildScrollView(
+                    child: Column(
+                      children: <Widget>[
+                        for (var prediction in _placePredictions)
+                          _placeOption(Place.fromJSON(prediction, geocode)),
+                      ],
                     ),
                   ),
               ],
