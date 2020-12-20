@@ -715,7 +715,7 @@ class _SearchMapBorderState extends State<SearchMapBorder>
         ),
         contentPadding: EdgeInsets.symmetric(
           horizontal: 10,
-          vertical: 0,
+          vertical: 4,
         ),
       ),
     );
