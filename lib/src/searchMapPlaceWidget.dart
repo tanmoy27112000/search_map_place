@@ -542,7 +542,7 @@ class SearchMapPlaceBorderWidget extends StatefulWidget {
       _SearchMapPlaceBorderWidgetState();
 }
 
-class _SearchMapPlaceBorderWidgetState extends State<SearchMapPlaceWidget>
+class _SearchMapPlaceBorderWidgetState extends State<SearchMapPlaceBorderWidget>
     with TickerProviderStateMixin {
   TextEditingController _textEditingController = TextEditingController();
   AnimationController _animationController;
