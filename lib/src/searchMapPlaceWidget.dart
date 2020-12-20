@@ -618,7 +618,7 @@ class _SearchMapBorderState extends State<SearchMapBorder>
         animation: _animationController,
         builder: (context, _) {
           return Container(
-            height: _containerHeight.value,
+            height: MediaQuery.of(context).size.height * 0.4,
             decoration: _containerDecoration(),
             child: Column(
               children: <Widget>[
@@ -766,7 +766,7 @@ class _SearchMapBorderState extends State<SearchMapBorder>
 
   BoxDecoration _containerDecoration() {
     return BoxDecoration(
-      color: widget.darkMode ? Colors.transparent : Color(0xffE5E5E5),
+      color: widget.darkMode ? Colors.white : Color(0xffE5E5E5),
       border: widget.border != null
           ? Border.all(
               width: widget.border,
