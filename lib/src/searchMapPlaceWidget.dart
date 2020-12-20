@@ -602,7 +602,7 @@ class _SearchMapBorderState extends State<SearchMapBorder>
   @override
   Widget build(BuildContext context) => Container(
         width: MediaQuery.of(context).size.width,
-        color: Colors.transparent,
+        color: Colors.white,
         child: _searchContainer(
           child: _searchInput(context),
         ),
@@ -622,8 +622,8 @@ class _SearchMapBorderState extends State<SearchMapBorder>
               children: <Widget>[
                 Padding(
                   padding: EdgeInsets.only(
-                      left: widget.leftPadding,
-                      right: widget.rightPadding,
+                      // left: widget.leftPadding,
+                      // right: widget.rightPadding,
                       top: 4),
                   child: child,
                 ),
@@ -727,15 +727,39 @@ class _SearchMapBorderState extends State<SearchMapBorder>
   */
   InputDecoration _inputStyle() {
     return InputDecoration(
-      hintText: this.widget.placeholder,
-      suffixIcon: InkWell(
-          onTap: () {
-            _textEditingController.clear();
-          },
-          child: Icon(Icons.close)),
-      border: InputBorder.none,
-      hintStyle: TextStyle(
-        color: widget.darkMode ? Colors.black : Colors.black,
+      contentPadding: const EdgeInsets.symmetric(
+        horizontal: 8.0,
+        vertical: 10.0,
+      ),
+      border: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(80),
+        borderSide: BorderSide(
+          width: 1,
+          color: widget.borderColor,
+        ),
+      ),
+      enabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(80),
+        borderSide: BorderSide(
+          width: 1,
+          color: widget.borderColor,
+        ),
+      ),
+      focusedBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(80),
+        borderSide: BorderSide(width: 1, color: widget.borderColor),
+      ),
+      hintText: "Enter your address",
+      hintStyle: TextStyle(fontStyle: FontStyle.italic),
+      counterText: '',
+      // focusedErrorBorder: widget.errorFocusedBorder,
+      floatingLabelBehavior: FloatingLabelBehavior.never,
+      labelText: "Enter Phone Number",
+      suffixIcon: IconButton(
+        icon: Icon(Icons.close),
+        onPressed: () {
+          _textEditingController.clear();
+        },
       ),
     );
   }
