@@ -161,7 +161,7 @@ class _SearchMapPlaceWidgetState extends State<SearchMapPlaceWidget>
   @override
   Widget build(BuildContext context) => Container(
         width: MediaQuery.of(context).size.width,
-        color: Colors.white,
+        color: Color(0xffFA4616),
         child: _searchContainer(
           child: _searchInput(context),
         ),
@@ -303,7 +303,7 @@ class _SearchMapPlaceWidgetState extends State<SearchMapPlaceWidget>
 
   BoxDecoration _containerDecoration() {
     return BoxDecoration(
-      color: widget.darkMode ? Colors.grey[800] : Colors.orange,
+      color: widget.darkMode ? Colors.grey[800] : Color(0xffFA4616),
       // border: widget.border != null
       //     ? Border.all(
       //         width: widget.border,
