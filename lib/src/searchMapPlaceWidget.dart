@@ -303,7 +303,7 @@ class _SearchMapPlaceWidgetState extends State<SearchMapPlaceWidget>
 
   BoxDecoration _containerDecoration() {
     return BoxDecoration(
-      color: widget.darkMode ? Colors.grey[800] : Colors.white,
+      color: widget.darkMode ? Colors.grey[800] : Colors.orange,
       // border: widget.border != null
       //     ? Border.all(
       //         width: widget.border,
