@@ -652,7 +652,7 @@ class _SearchMapBorderState extends State<SearchMapBorder>
               Expanded(
                 child: Container(
                   decoration: BoxDecoration(
-                    color: Colors.white,
+                    // color: Colors.white,
                     borderRadius: BorderRadius.circular(100),
                   ),
                   child: Padding(
@@ -726,7 +726,7 @@ class _SearchMapBorderState extends State<SearchMapBorder>
   */
   InputDecoration _inputStyle() {
     return InputDecoration(
-      contentPadding: const EdgeInsets.symmetric(),
+      contentPadding: const EdgeInsets.symmetric(horizontal: 8),
       border: OutlineInputBorder(
         borderRadius: BorderRadius.circular(80),
         borderSide: BorderSide(
