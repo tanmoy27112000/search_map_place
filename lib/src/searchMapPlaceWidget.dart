@@ -652,12 +652,11 @@ class _SearchMapBorderState extends State<SearchMapBorder>
               Expanded(
                 child: Container(
                   decoration: BoxDecoration(
-                    color: Colors.transparent,
+                    color: Colors.white,
                     borderRadius: BorderRadius.circular(100),
                   ),
                   child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                        vertical: 4.0, horizontal: 16),
+                    padding: const EdgeInsets.symmetric(horizontal: 8),
                     child: TextField(
                       decoration: _inputStyle(),
                       controller: _textEditingController,
