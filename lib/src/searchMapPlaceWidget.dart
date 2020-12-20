@@ -710,7 +710,7 @@ class _SearchMapBorderState extends State<SearchMapBorder>
               : "${place.replaceRange(45, place.length, "")} ...",
           style: TextStyle(
             fontSize: MediaQuery.of(context).size.width * 0.04,
-            color: widget.darkMode ? Colors.grey[100] : Colors.grey[850],
+            color: Colors.transparent,
           ),
           maxLines: 1,
         ),
