@@ -602,7 +602,7 @@ class _SearchMapBorderState extends State<SearchMapBorder>
   @override
   Widget build(BuildContext context) => Container(
         width: MediaQuery.of(context).size.width,
-        color: Colors.white,
+        // color: Colors.white,
         child: _searchContainer(
           child: _searchInput(context),
         ),
