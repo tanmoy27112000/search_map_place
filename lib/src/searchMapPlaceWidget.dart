@@ -213,10 +213,8 @@ class _SearchMapPlaceWidgetState extends State<SearchMapPlaceWidget>
               Expanded(
                 child: Container(
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(100),
-                    border: Border.all(
-                      color: Colors.orange,
-                    ),
+                    borderRadius: BorderRadius.circular(10),
+                    color: Colors.white,
                   ),
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
@@ -305,18 +303,18 @@ class _SearchMapPlaceWidgetState extends State<SearchMapPlaceWidget>
 
   BoxDecoration _containerDecoration() {
     return BoxDecoration(
-      color: widget.darkMode ? Colors.grey[800] : Color(0xffE5E5E5),
-      border: widget.border != null
-          ? Border.all(
-              width: widget.border,
-              color: widget.borderColor,
-            )
-          : null,
+      color: widget.darkMode ? Colors.grey[800] : Colors.white,
+      // border: widget.border != null
+      //     ? Border.all(
+      //         width: widget.border,
+      //         color: widget.borderColor,
+      //       )
+      //     : null,
       borderRadius: BorderRadius.all(Radius.circular(6.0)),
       boxShadow: widget.shadowRequired
           ? [
               BoxShadow(
-                color: Colors.black12,
+                color: Colors.white,
                 blurRadius: 20,
                 spreadRadius: 10,
               )
