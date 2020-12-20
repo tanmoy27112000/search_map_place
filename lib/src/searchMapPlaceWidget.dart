@@ -288,6 +288,7 @@ class _SearchMapPlaceWidgetState extends State<SearchMapPlaceWidget>
   InputDecoration _inputStyle() {
     return InputDecoration(
       hintText: this.widget.placeholder,
+      prefixIcon: Icon(Icons.search),
       suffixIcon: InkWell(
           onTap: () {
             _textEditingController.clear();
@@ -538,8 +539,7 @@ class SearchMapBorder extends StatefulWidget {
   final bool darkMode;
 
   @override
-  _SearchMapBorderState createState() =>
-      _SearchMapBorderState();
+  _SearchMapBorderState createState() => _SearchMapBorderState();
 }
 
 class _SearchMapBorderState extends State<SearchMapBorder>
@@ -602,7 +602,7 @@ class _SearchMapBorderState extends State<SearchMapBorder>
   @override
   Widget build(BuildContext context) => Container(
         width: MediaQuery.of(context).size.width,
-        color: Colors.white,
+        color: Colors.transparent,
         child: _searchContainer(
           child: _searchInput(context),
         ),
@@ -652,11 +652,12 @@ class _SearchMapBorderState extends State<SearchMapBorder>
               Expanded(
                 child: Container(
                   decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(10),
+                    color: Colors.transparent,
+                    borderRadius: BorderRadius.circular(100),
                   ),
                   child: Padding(
-                    padding: const EdgeInsets.all(8.0),
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 4.0, horizontal: 16),
                     child: TextField(
                       decoration: _inputStyle(),
                       controller: _textEditingController,
@@ -727,7 +728,11 @@ class _SearchMapBorderState extends State<SearchMapBorder>
   InputDecoration _inputStyle() {
     return InputDecoration(
       hintText: this.widget.placeholder,
-      prefixIcon: Icon(Icons.search),
+      suffixIcon: InkWell(
+          onTap: () {
+            _textEditingController.clear();
+          },
+          child: Icon(Icons.close)),
       border: InputBorder.none,
       hintStyle: TextStyle(
         color: widget.darkMode ? Colors.black : Colors.black,
@@ -737,7 +742,7 @@ class _SearchMapBorderState extends State<SearchMapBorder>
 
   BoxDecoration _containerDecoration() {
     return BoxDecoration(
-      color: widget.darkMode ? Colors.grey[800] : Color(0xffE5E5E5),
+      color: widget.darkMode ? Colors.transparent : Color(0xffE5E5E5),
       border: widget.border != null
           ? Border.all(
               width: widget.border,
