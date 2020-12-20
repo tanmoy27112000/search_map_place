@@ -754,6 +754,8 @@ class _SearchMapBorderState extends State<SearchMapBorder>
         icon: Icon(Icons.close),
         onPressed: () {
           _textEditingController.clear();
+          _currentInput = "";
+          setState(() {});
         },
       ),
     );
