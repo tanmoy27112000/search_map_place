@@ -440,8 +440,8 @@ class _SearchMapPlaceWidgetState extends State<SearchMapPlaceWidget>
   }
 }
 
-class SearchMapPlaceBorderWidget extends StatefulWidget {
-  SearchMapPlaceBorderWidget({
+class SearchMapBorder extends StatefulWidget {
+  SearchMapBorder({
     @required this.apiKey,
     this.placeholder = 'Search',
     this.icon = Icons.search,
@@ -538,11 +538,11 @@ class SearchMapPlaceBorderWidget extends StatefulWidget {
   final bool darkMode;
 
   @override
-  _SearchMapPlaceBorderWidgetState createState() =>
-      _SearchMapPlaceBorderWidgetState();
+  _SearchMapBorderState createState() =>
+      _SearchMapBorderState();
 }
 
-class _SearchMapPlaceBorderWidgetState extends State<SearchMapPlaceBorderWidget>
+class _SearchMapBorderState extends State<SearchMapBorder>
     with TickerProviderStateMixin {
   TextEditingController _textEditingController = TextEditingController();
   AnimationController _animationController;
