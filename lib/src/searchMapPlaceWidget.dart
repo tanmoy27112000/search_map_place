@@ -655,7 +655,7 @@ class _SearchMapBorderState extends State<SearchMapBorder>
                     borderRadius: BorderRadius.circular(100),
                   ),
                   child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 8),
+                    padding: const EdgeInsets.symmetric(horizontal: 16),
                     child: TextField(
                       decoration: _inputStyle(),
                       controller: _textEditingController,
@@ -761,7 +761,7 @@ class _SearchMapBorderState extends State<SearchMapBorder>
 
   BoxDecoration _containerDecoration() {
     return BoxDecoration(
-      color: widget.darkMode ? Colors.white : Color(0xffE5E5E5),
+      color: Colors.white,
       border: widget.border != null
           ? Border.all(
               width: widget.border,
