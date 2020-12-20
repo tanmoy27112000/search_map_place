@@ -727,10 +727,7 @@ class _SearchMapBorderState extends State<SearchMapBorder>
   */
   InputDecoration _inputStyle() {
     return InputDecoration(
-      contentPadding: const EdgeInsets.symmetric(
-        horizontal: 8.0,
-        vertical: 10.0,
-      ),
+      contentPadding: const EdgeInsets.symmetric(),
       border: OutlineInputBorder(
         borderRadius: BorderRadius.circular(80),
         borderSide: BorderSide(
@@ -749,12 +746,12 @@ class _SearchMapBorderState extends State<SearchMapBorder>
         borderRadius: BorderRadius.circular(80),
         borderSide: BorderSide(width: 1, color: widget.borderColor),
       ),
-      hintText: "Enter your address",
+      hintText: widget.placeholder,
       hintStyle: TextStyle(fontStyle: FontStyle.italic),
       counterText: '',
       // focusedErrorBorder: widget.errorFocusedBorder,
       floatingLabelBehavior: FloatingLabelBehavior.never,
-      labelText: "Enter Phone Number",
+      labelText: widget.placeholder,
       suffixIcon: IconButton(
         icon: Icon(Icons.close),
         onPressed: () {
