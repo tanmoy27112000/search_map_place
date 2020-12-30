@@ -12,6 +12,7 @@ class SearchMapPlaceWidget extends StatefulWidget {
     this.onSearch,
     this.language = 'en',
     this.shadowRequired,
+    this.onchanged,
     this.location,
     this.radius,
     this.strictBounds = false,
@@ -28,6 +29,8 @@ class SearchMapPlaceWidget extends StatefulWidget {
         super(key: key);
 
   final Key key;
+
+  Function onchanged;
 
   ///To return shadow or not
   final bool shadowRequired;
@@ -219,6 +222,9 @@ class _SearchMapPlaceWidgetState extends State<SearchMapPlaceWidget>
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: TextField(
+                      onChanged: (val) {
+                        widget.onchanged(val);
+                      },
                       decoration: _inputStyle(),
                       controller: _textEditingController,
                       onSubmitted: (_) => _selectPlace(),
@@ -463,12 +469,15 @@ class SearchMapBorder extends StatefulWidget {
     this.rightPadding,
     this.borderColor = Colors.black,
     this.hintColor = Colors.black,
+    this.onchanged,
     this.key,
   })  : assert((location == null && radius == null) ||
             (location != null && radius != null)),
         super(key: key);
 
   final Key key;
+
+  Function onchanged;
 
   ///To return shadow or not
   final bool shadowRequired;
@@ -657,6 +666,9 @@ class _SearchMapBorderState extends State<SearchMapBorder>
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 8),
                     child: TextField(
+                      onChanged: (val) {
+                        widget.onchanged(val);
+                      },
                       decoration: _inputStyle(),
                       controller: _textEditingController,
                       onSubmitted: (_) => _selectPlace(),
