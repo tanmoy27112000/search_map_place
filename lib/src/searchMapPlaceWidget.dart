@@ -576,6 +576,7 @@ class _SearchMapBorderState extends State<SearchMapBorder>
 
   @override
   void initState() {
+    _currentInput = widget.controller.text;
     geocode = Geocoding(apiKey: widget.apiKey, language: widget.language);
     _animationController =
         AnimationController(vsync: this, duration: Duration(milliseconds: 500));
