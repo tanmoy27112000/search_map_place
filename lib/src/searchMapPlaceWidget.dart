@@ -470,7 +470,7 @@ class SearchMapBorder extends StatefulWidget {
     this.borderColor = Colors.black,
     this.hintColor = Colors.black,
     this.onchanged,
-    this.controller,
+    this.filledText = "",
     this.key,
   })  : assert((location == null && radius == null) ||
             (location != null && radius != null)),
@@ -478,9 +478,9 @@ class SearchMapBorder extends StatefulWidget {
 
   final Key key;
 
-  TextEditingController controller;
-
   Function onchanged;
+
+  String filledText;
 
   ///To return shadow or not
   final bool shadowRequired;
@@ -556,7 +556,7 @@ class SearchMapBorder extends StatefulWidget {
 
 class _SearchMapBorderState extends State<SearchMapBorder>
     with TickerProviderStateMixin {
-  // TextEditingController _textEditingController = TextEditingController();
+  TextEditingController _textEditingController = TextEditingController();
   AnimationController _animationController;
   // SearchContainer height.
   Animation _containerHeight;
@@ -576,7 +576,8 @@ class _SearchMapBorderState extends State<SearchMapBorder>
 
   @override
   void initState() {
-    _currentInput = widget.controller.text;
+    _currentInput = widget.filledText;
+    _textEditingController.text = widget.filledText;
     geocode = Geocoding(apiKey: widget.apiKey, language: widget.language);
     _animationController =
         AnimationController(vsync: this, duration: Duration(milliseconds: 500));
@@ -596,7 +597,7 @@ class _SearchMapBorderState extends State<SearchMapBorder>
       ),
     );
 
-    widget.controller.addListener(_autocompletePlace);
+    _textEditingController.addListener(_autocompletePlace);
     customListener();
 
     if (widget.hasClearButton) {
@@ -674,7 +675,7 @@ class _SearchMapBorderState extends State<SearchMapBorder>
                         widget.onchanged(val);
                       },
                       decoration: _inputStyle(),
-                      controller: widget.controller,
+                      controller: _textEditingController,
                       onSubmitted: (_) => _selectPlace(),
                       onEditingComplete: _selectPlace,
                       autofocus: false,
@@ -769,7 +770,7 @@ class _SearchMapBorderState extends State<SearchMapBorder>
       suffixIcon: IconButton(
         icon: Icon(Icons.close),
         onPressed: () {
-          widget.controller.clear();
+          _textEditingController.clear();
           _currentInput = "";
           setState(() {});
         },
@@ -808,15 +809,15 @@ class _SearchMapBorderState extends State<SearchMapBorder>
   void _autocompletePlace() async {
     if (_fn.hasFocus) {
       setState(() {
-        _currentInput = widget.controller.text;
+        _currentInput = _textEditingController.text;
         _isEditing = true;
       });
 
-      widget.controller.removeListener(_autocompletePlace);
+      _textEditingController.removeListener(_autocompletePlace);
 
       if (_currentInput.length == 0) {
         if (!_containerHeight.isDismissed) _closeSearch();
-        widget.controller.addListener(_autocompletePlace);
+        _textEditingController.addListener(_autocompletePlace);
         return;
       }
 
@@ -826,12 +827,12 @@ class _SearchMapBorderState extends State<SearchMapBorder>
         setState(() => _placePredictions = predictions);
         await _animationController.forward();
 
-        widget.controller.addListener(_autocompletePlace);
+        _textEditingController.addListener(_autocompletePlace);
         return;
       }
 
       Future.delayed(Duration(milliseconds: 500), () {
-        widget.controller.addListener(_autocompletePlace);
+        _textEditingController.addListener(_autocompletePlace);
         if (_isEditing == true) _autocompletePlace();
       });
     }
@@ -870,7 +871,7 @@ class _SearchMapBorderState extends State<SearchMapBorder>
   /// Will be called when a user selects one of the Place options
   void _selectPlace({Place prediction}) async {
     if (prediction != null) {
-      widget.controller.value = TextEditingValue(
+      _textEditingController.value = TextEditingValue(
         text: prediction.description,
         selection: TextSelection.collapsed(
           offset: prediction.description.length,
@@ -897,13 +898,13 @@ class _SearchMapBorderState extends State<SearchMapBorder>
       _isEditing = false;
     });
     _animationController.reverse();
-    widget.controller.addListener(_autocompletePlace);
+    _textEditingController.addListener(_autocompletePlace);
   }
 
   /// Will listen for input changes every 0.5 seconds, allowing us to make API requests only when the user stops typing.
   void customListener() {
     Future.delayed(Duration(milliseconds: 500), () {
-      setState(() => _tempInput = widget.controller.text);
+      setState(() => _tempInput = _textEditingController.text);
       customListener();
     });
   }
@@ -911,7 +912,7 @@ class _SearchMapBorderState extends State<SearchMapBorder>
   @override
   void dispose() {
     _animationController.dispose();
-    widget.controller.dispose();
+    _textEditingController.dispose();
     _fn.dispose();
     super.dispose();
   }
