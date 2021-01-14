@@ -24,11 +24,14 @@ class SearchMapPlaceWidget extends StatefulWidget {
     this.borderColor = Colors.black,
     this.hintColor = Colors.black,
     this.key,
+    this.resultTextColor = Colors.black,
   })  : assert((location == null && radius == null) ||
             (location != null && radius != null)),
         super(key: key);
 
   final Key key;
+
+  Color resultTextColor;
 
   Function onchanged;
 
@@ -276,7 +279,7 @@ class _SearchMapPlaceWidgetState extends State<SearchMapPlaceWidget>
               : "${place.replaceRange(45, place.length, "")} ...",
           style: TextStyle(
             fontSize: MediaQuery.of(context).size.width * 0.04,
-            color: widget.darkMode ? Colors.grey[100] : Colors.grey[850],
+            color: widget.darkMode ? Colors.grey[100] : widget.resultTextColor,
           ),
           maxLines: 1,
         ),
